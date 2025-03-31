@@ -24,7 +24,6 @@ public class WPMProgram {
         Random rand = new Random();
         StringBuilder generatedText = new StringBuilder();
 
-        // Generate 10 random words
         String[] selectedWords = new String[10];
         for (int i = 0; i < 10; i++) {
             selectedWords[i] = words[rand.nextInt(words.length)];
@@ -36,17 +35,15 @@ public class WPMProgram {
         double start = LocalTime.now().toNanoOfDay();
 
         Scanner scan = new Scanner(System.in);
-        String typed = scan.nextLine().trim(); // Read input and trim extra spaces
+        String typed = scan.nextLine().trim(); 
 
         double end = LocalTime.now().toNanoOfDay();
 
-        // Check if the typed text matches the generated text
         if (!typed.equals(generatedText.toString().trim())) {
             System.out.println("You've printed the wrong word!");
-            return; // Exit without calculating WPM
+            return; 
         }
 
-        // Calculate WPM
         double actualTime = end - start;
         double sec = actualTime / 1_000_000_000.0;
         int numc = typed.length();
