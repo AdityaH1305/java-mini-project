@@ -12,7 +12,7 @@ public class WPMProgram {
         "diamond", "engine", "flamingo", "garden", "horizon", "iceberg", "jigsaw", "kangaroo", "lantern",
         "moonlight", "nightingale", "octopus", "parrot", "quicksand", "rainbow", "sapphire", "tornado",
         "unicorn", "violet", "windmill", "yacht", "zeppelin"
-    };
+    };//50 random words
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("3");
@@ -20,6 +20,7 @@ public class WPMProgram {
         System.out.println("2");
         TimeUnit.SECONDS.sleep(1);
         System.out.println("1");
+        TimeUnit.SECONDS.sleep(1);
 
         Random rand = new Random();
         StringBuilder generatedText = new StringBuilder();
@@ -44,7 +45,7 @@ public class WPMProgram {
             return; 
         }
 
-        double actualTime = end - start;
+        double actualTime = end - start;//calculates time taken to type all words
         double sec = actualTime / 1_000_000_000.0;
         int numc = typed.length();
         int wpm = (int) (((double) numc / 5) / sec * 60);
