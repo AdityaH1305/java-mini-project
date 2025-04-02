@@ -72,7 +72,7 @@ public class WPMProgram {
 
             if (wpm > highestWPM) {
                 highestWPM = wpm;
-                System.out.println("🎉 New High Score! 🎉\n");
+                System.out.println(" New High Score! \n");
             } else {
                 System.out.println("Highest WPM so far: " + highestWPM + "\n");
             }
@@ -88,7 +88,7 @@ public class WPMProgram {
                     showGraph();
                 }
                 
-                System.out.println("\nThanks for playing! Goodbye! 👋\n");
+                System.out.println("\nThanks for playing! Goodbye!\n");
                 break;
             }
         }
