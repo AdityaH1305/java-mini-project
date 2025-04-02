@@ -16,7 +16,8 @@ public class WPMProgram {
     };
 
     static int highestWPM = 0;
-    static List<String> previousScores = new ArrayList<>();
+    static List<Integer> wpmScores = new ArrayList<>();
+    static List<Integer> accuracyScores = new ArrayList<>();
 
     public static void main(String[] args) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
@@ -61,17 +62,13 @@ public class WPMProgram {
             System.out.println("        Typing Test Results        ");
             System.out.println("===================================");
 
-            if (!typed.equals(generatedText.toString().trim())) {
-                System.out.println("Incorrect! Try again.\n");
-                continue;
-            }
-
-            int accuracy = (int) (((double) getMatchingCharacters(typed, generatedText.toString().trim()) / generatedText.length()) * 100);
+            int accuracy = calculateWordAccuracy(typed, selectedWords);
             System.out.println("Your WPM: " + wpm);
             System.out.println("Accuracy: " + accuracy + "%");
             System.out.println("Time taken: " + sec + " seconds\n");
             
-            previousScores.add("WPM: " + wpm + " | Accuracy: " + accuracy + "% | Time: " + sec + " sec");
+            wpmScores.add(wpm);
+            accuracyScores.add(accuracy);
 
             if (wpm > highestWPM) {
                 highestWPM = wpm;
@@ -82,16 +79,13 @@ public class WPMProgram {
             
             System.out.println("Would you like to play again? (yes/no)");
             if (!scan.nextLine().equalsIgnoreCase("yes")) {
-                System.out.println("\nWhat would you like to do?\n1. Exit\n2. Show previous results");
+                System.out.println("\nWhat would you like to do?\n1. Exit\n2. Show results");
                 System.out.print("Enter your choice: ");
                 int finalChoice = scan.nextInt();
                 scan.nextLine();
                 
                 if (finalChoice == 2) {
-                    System.out.println("\nPrevious Scores:");
-                    for (String score : previousScores) {
-                        System.out.println(score);
-                    }
+                    showGraph();
                 }
                 
                 System.out.println("\nThanks for playing! Goodbye! 👋\n");
@@ -100,13 +94,38 @@ public class WPMProgram {
         }
     }
 
-    public static int getMatchingCharacters(String typed, String original) {
-        int count = 0;
-        for (int i = 0; i < Math.min(typed.length(), original.length()); i++) {
-            if (typed.charAt(i) == original.charAt(i)) {
-                count++;
+    public static int calculateWordAccuracy(String typed, String[] originalWords) {
+        String[] typedWords = typed.trim().split("\\s+");
+        int correctWords = 0;
+        int totalWords = originalWords.length;
+
+        for (int i = 0; i < Math.min(typedWords.length, totalWords); i++) {
+            if (typedWords[i].equals(originalWords[i])) {
+                correctWords++;
             }
         }
-        return count;
+        return (int) (((double) correctWords / totalWords) * 100);
+    }
+
+    public static void showGraph() {
+        System.out.println("\nTyping Speed Progress:\n");
+        for (int i = 0; i < wpmScores.size(); i++) {
+            System.out.printf("Attempt %d: ", i + 1);
+            int bars = wpmScores.get(i) / 2;
+            for (int j = 0; j < bars; j++) {
+                System.out.print("#");
+            }
+            System.out.println(" " + wpmScores.get(i) + " WPM");
+        }
+        
+        System.out.println("\nTyping Accuracy Progress:\n");
+        for (int i = 0; i < accuracyScores.size(); i++) {
+            System.out.printf("Attempt %d: ", i + 1);
+            int bars = accuracyScores.get(i) / 2;
+            for (int j = 0; j < bars; j++) {
+                System.out.print("*");
+            }
+            System.out.println(" " + accuracyScores.get(i) + "% Accuracy");
+        }
     }
 }
