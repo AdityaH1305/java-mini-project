@@ -1,2 +1,4 @@
 # java-mini-project
-only god knows why hes making us do this shit
+Semester 4 Java Lab mini project
+
+Typing speed calculator
