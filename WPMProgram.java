@@ -144,7 +144,7 @@ public class WPMProgram {
             int bars = accuracyScores.get(i) / 2;
             System.out.print(CYAN);
             for (int j = 0; j < bars; j++) {
-                System.out.print("");
+                System.out.print("*");
             }
             System.out.println(RESET + " " + accuracyScores.get(i) + "% Accuracy");
         }
