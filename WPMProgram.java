@@ -85,7 +85,7 @@ public class WPMProgram {
 
             if (wpm > highestWPM) {
                 highestWPM = wpm;
-                System.out.println(GREEN + " 🎉 New High Score! 🎉" + RESET + "\n");
+                System.out.println(GREEN + "  New High Score! " + RESET + "\n");
             } else {
                 System.out.println(YELLOW + " Highest WPM so far: " + highestWPM + RESET + "\n");
             }
@@ -103,7 +103,7 @@ public class WPMProgram {
                     showGraph();
                 }
                 
-                System.out.println("\n" + PURPLE + "Thanks for playing! Goodbye! 👋" + RESET + "\n");
+                System.out.println("\n" + PURPLE + "Thanks for playing! Goodbye!" + RESET + "\n");
                 break;
             }
         }
@@ -144,7 +144,7 @@ public class WPMProgram {
             int bars = accuracyScores.get(i) / 2;
             System.out.print(CYAN);
             for (int j = 0; j < bars; j++) {
-                System.out.print("★");
+                System.out.print("");
             }
             System.out.println(RESET + " " + accuracyScores.get(i) + "% Accuracy");
         }
