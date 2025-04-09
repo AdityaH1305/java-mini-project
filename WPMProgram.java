@@ -33,13 +33,18 @@ public class WPMProgram {
         System.out.println(CYAN + "╔════════════════════════════════════╗" + RESET);
         System.out.println(CYAN + "║   Welcome to the WPM Typing Test   ║" + RESET);
         System.out.println(CYAN + "╚════════════════════════════════════╝" + RESET + "\n");
-
-        System.out.println(YELLOW + "Choose difficulty:" + RESET);
-        System.out.println("  1. Easy (5 words)");
-        System.out.println("  2. Medium (10 words)");
-        System.out.println("  3. Hard (15 words)");
-        System.out.print(GREEN + "Enter your choice: " + RESET);
-        int choice = scan.nextInt();
+        int choice;
+        while(true){
+            System.out.println(YELLOW + "Choose difficulty:" + RESET);
+            System.out.println("  1. Easy (5 words)");
+            System.out.println("  2. Medium (10 words)");
+            System.out.println("  3. Hard (15 words)");
+            System.out.print(GREEN + "Enter your choice: " + RESET);
+            choice = scan.nextInt();
+            if (choice >= 1 && choice <= 3) {
+                break;
+            }
+        }
         int wordCount = choice == 1 ? 5 : (choice == 2 ? 10 : 15);
         scan.nextLine();
 
